@@ -65,6 +65,10 @@ post '/parties' do
 	redirect '/parties'
 end
 
+get '/parties/:id' do
+	@party = Party.find(params[:id])
+	erb :"parties/show"
+end
 
 
 #
