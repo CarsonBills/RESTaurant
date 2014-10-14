@@ -55,3 +55,16 @@ get '/parties' do
 	@parties = Party.all
 	erb :'parties/index'
 end
+
+get '/parties/new' do
+	erb :'parties/new'
+end
+
+post '/parties' do
+	Party.create(params[:party])
+	redirect '/parties'
+end
+
+
+
+#

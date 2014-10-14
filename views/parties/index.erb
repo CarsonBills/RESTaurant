@@ -1,1 +1,9 @@
 <h2> All parties at RESTaurant </h2>
+
+<ul>
+	<% @parties.each do |party| %>
+		<li>
+			<%= party.name %>
+		</li>
+	<% end %>
+</ul>
