@@ -3,6 +3,7 @@ Bundler.require
 
 require_relative 'models/food'
 require_relative 'models/party'
+require_relative 'models/order'
 
 ActiveRecord::Base.establish_connection({
 	adapter: 'postgresql',
@@ -67,6 +68,7 @@ end
 
 get '/parties/:id' do
 	@party = Party.find(params[:id])
+	@foods = Food.all
 	erb :"parties/show"
 end
 
@@ -86,4 +88,11 @@ delete '/parties/:id' do
 	redirect "/parties"
 end
 
-#
+post '/orders' do
+#	binding.pry
+	food = Food.find(params[:food][:id])
+	party = Party.find(params[:party][:id])
+	party.foods << food
+	redirect "/parties/#{party.id}"
+end
+
