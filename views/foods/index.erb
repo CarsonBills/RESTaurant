@@ -1,1 +1,10 @@
-<h2> Full menu <h2>
+<h2> Full menu </h2>
+
+<ul>	
+	<% @foods.each do |food| %>
+		<li>
+			<%= food.name %>
+			<%= food.price %>
+		</li>
+	<% end %>
+</ul>
