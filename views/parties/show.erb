@@ -16,14 +16,17 @@
 		<%end%>
 	</select>
 	<input type="hidden" name="party[id]" value="<%=@party.id%>">
-	<input type="submit">
+	<input type="submit" value="new order">
 </form>
 
 <ul>
 	<% @party.foods.each do |food| %>
 		<li>
-			<%= food.name %>
-			<%= food.price %>
+			<form>
+				<%= food.name %>
+				<%= food.price %>
+				<input type="radio" name="free">No charge?
+			</form>
 		</li>
 	<%end%>
 </ul>
