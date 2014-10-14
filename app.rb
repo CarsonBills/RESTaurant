@@ -42,3 +42,8 @@ patch '/foods/:id' do
 	food.update(params[:food])
 	redirect "/foods/#{food.id}"
 end
+
+delete '/foods/:id' do
+	Food.delete(params[:id])
+	redirect "/foods"
+end
