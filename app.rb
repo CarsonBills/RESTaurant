@@ -47,3 +47,11 @@ delete '/foods/:id' do
 	Food.delete(params[:id])
 	redirect "/foods"
 end
+
+
+
+
+get '/parties' do
+	@parties = Party.all
+	erb :'parties/index'
+end
