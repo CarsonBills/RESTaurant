@@ -81,5 +81,9 @@ patch '/parties/:id' do
 	redirect "/parties/#{party.id}"
 end
 
+delete '/parties/:id' do
+	Party.delete(params[:id])
+	redirect "/parties"
+end
 
 #
