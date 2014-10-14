@@ -1,0 +1,8 @@
+<h2> Edit a menu item. </h2>
+
+<form action="/foods/<%=@food.id%>" method='post'> 
+	<input type="hidden" name="_method" value="patch">
+	<input type="text" name="food[name]" value="<%= @food.name %>">
+	<input type="text" name="food[price]" value="<%= @food.price %>">
+	<input type="submit">
+</form>

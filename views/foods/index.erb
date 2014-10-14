@@ -3,8 +3,10 @@
 <ul>	
 	<% @foods.each do |food| %>
 		<li>
-			<%= food.name %>
-			<%= food.price %>
+			<a href="/foods/<%=food.id%>">
+				<%= food.name %>
+				<%= food.price %>
+			</a>	
 		</li>
 	<% end %>
 </ul>
