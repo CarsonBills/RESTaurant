@@ -93,6 +93,7 @@ post '/orders' do
 	food = Food.find(params[:food][:id])
 	party = Party.find(params[:party][:id])
 	party.foods << food
+	@party = Party.find(params[:party][:id])
 	redirect "/parties/#{party.id}"
 end
 

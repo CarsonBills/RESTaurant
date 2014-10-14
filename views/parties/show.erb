@@ -18,3 +18,12 @@
 	<input type="hidden" name="party[id]" value="<%=@party.id%>">
 	<input type="submit">
 </form>
+
+<ul>
+	<% @party.foods.each do |food| %>
+		<li>
+			<%= food.name %>
+			<%= food.price %>
+		</li>
+	<%end%>
+</ul>
