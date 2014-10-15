@@ -7,3 +7,11 @@
 		</li>
 	<% end %>
 </ul>
+
+<h3> Your total comes to <%= @total %> dollars.</h3>
+<p> Please tip your server </p>
+<p> 15% - <%= @total*0.15 %> </p>
+<p> 20% - <%= @total*0.20 %> </p>
+<p> 25% - <%= @total*0.25 %> </p>
+
+<a href="/receipt.txt">Download Receipt</a>

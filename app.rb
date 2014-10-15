@@ -26,8 +26,13 @@ get '/foods/new' do
 end
 
 post '/foods' do
-	Food.create(params[:food])
-	redirect '/foods'
+	food = Food.create(params[:food])
+	if food.valid?
+		redirect '/foods'
+	else
+		@errors = food.errors.full_messages
+		erb :'foods/new'
+	end
 end
 
 get '/foods/:id' do
@@ -106,7 +111,6 @@ end
 post '/parties/:id' do
 	@party = Party.find(params[:id])
 	receipt = @party.foods
-#	binding.pry
 	file = File.open('receipt.txt', 'w')
 	file.write(receipt.map {|item| item.to_s}.join.to_s )
 	file.close 
@@ -114,6 +118,10 @@ post '/parties/:id' do
 end
 
 get '/parties/:id/receipt' do
+	party = Party.find(params[:id])
+	receipt = party.foods
+	prices = receipt.map {|item| item[:price]}
+	@total = prices.inject(:+)
 	@receipt_items = File.read('receipt.txt').split(",")
 	erb :"parties/receipt"
 end
