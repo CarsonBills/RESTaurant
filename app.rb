@@ -103,10 +103,16 @@ post '/orders' do
 	redirect "/parties/#{party.id}"
 end
 
-#Aggresively Not Done. patch 'orders/:id' do
+#Aggresively Not Done. 
+# patch 'orders/:id' do
 #	@price = Food.find(params[:food][:price])
 #	redirect "/parties/#{party.id}"
 #end
+
+delete '/orders/:id' do
+	Order.delete(params[:id])
+	redirect "/parties/#{params[:party][:id]}"
+end
 
 post '/parties/:id' do
 	@party = Party.find(params[:id])
