@@ -1,6 +1,8 @@
 require 'bundler'
 Bundler.require
 
+require 'pry'
+
 require_relative 'models/food'
 require_relative 'models/party'
 require_relative 'models/order'
@@ -50,7 +52,7 @@ delete '/foods/:id' do
 end
 
 
-
+# PARTIES ROUTES
 
 get '/parties' do
 	@parties = Party.all
@@ -96,8 +98,22 @@ post '/orders' do
 	redirect "/parties/#{party.id}"
 end
 
-patch 'orders/:id' do
-	binding.pry
-	@price = Food.find(params[:food][:price])
-	redirect "/parties/#{party.id}"
+#Aggresively Not Done. patch 'orders/:id' do
+#	@price = Food.find(params[:food][:price])
+#	redirect "/parties/#{party.id}"
+#end
+
+post '/parties/:id' do
+	@party = Party.find(params[:id])
+	receipt = @party.foods
+#	binding.pry
+	file = File.open('receipt.txt', 'w')
+	file.write(receipt.map {|item| item.to_s}.join.to_s )
+	file.close 
+	redirect "/parties/#{@party.id}/receipt"
+end
+
+get '/parties/:id/receipt' do
+	@receipt_items = File.read('receipt.txt').split(",")
+	erb :"parties/receipt"
 end
