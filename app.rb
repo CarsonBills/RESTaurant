@@ -89,7 +89,6 @@ delete '/parties/:id' do
 end
 
 post '/orders' do
-#	binding.pry
 	food = Food.find(params[:food][:id])
 	party = Party.find(params[:party][:id])
 	party.foods << food
@@ -97,3 +96,8 @@ post '/orders' do
 	redirect "/parties/#{party.id}"
 end
 
+patch 'orders/:id' do
+	binding.pry
+	@price = Food.find(params[:food][:price])
+	redirect "/parties/#{party.id}"
+end
