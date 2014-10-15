@@ -1,4 +1,12 @@
 <h3> Add a food item </h3>
+<% if @errors %>
+	<h1> Error! </h1>
+		<ul>
+			<% @errors.each do |error| %>
+				<li><h2><%= error %></h2></li>
+			<% end %>
+		</ul>
+<% end %>
 
 <form action="/foods" method='post'> 
 	<input type="text" name="food[name]" placeholder="Enter Name">
