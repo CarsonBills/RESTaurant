@@ -82,6 +82,7 @@ end
 
 get '/parties/:id/edit' do
 	@party = Party.find(params[:id])
+	@paid = @party.paid
 	erb :"parties/edit"
 end
 

@@ -1,8 +1,12 @@
 <h2>Edit a party</h2>
 
-<form action="/parties/<%=@party.id%>" method="post">
-	<input type="hidden" name="_method" value="patch">
-	<input type="text" name="party[name]" value="<%=@party.name%>">
-	<input type="text" name="party[size]" value="<%=@party.size%>">
-	<input type="submit">
-</form>
+<% unless @paid == true %>
+	<form action="/parties/<%=@party.id%>" method="post">
+		<input type="hidden" name="_method" value="patch">
+		<input type="text" name="party[name]" value="<%=@party.name%>">
+		<input type="text" name="party[size]" value="<%=@party.size%>">
+		<input type="submit">
+	</form>
+<% else %>
+	<p> This party has paid. </p>
+<% end %>
