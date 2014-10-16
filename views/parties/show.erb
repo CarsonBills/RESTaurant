@@ -8,45 +8,43 @@
 	<input type="submit" value="Delete Party">
 </form>
 
-
-<form action="/orders" method="post">
-	<select name="food[id]">
-		<% @foods.each do |food| %>
-			<option value="<%= food.id %>"><%= food.name %></option>
-		<%end%>
-	</select>
-	<input type="hidden" name="party[id]" value="<%=@party.id%>">
-	<input type="submit" value="new order">
-</form>
-
-
-<ul>
-	<% @party.orders.each do |order| %>
-		<li>
-			<form action="/orders/<%= order.id %>" method="post">
-			<input type="hidden" name="_method" value="delete">
-			<%= order.food.name %>
-			<%= order.food.price %>
-			<input type="hidden" name="party[id]" value="<%=@party.id%>"> 
-			<input type="submit" value="Delete">
-			</form>
-		</li>
-	<%end%>
-</ul>
-
-
-<form action="/parties/<%= @party.id %>" method="post">
-	<input type="submit" value="View Receipt">
-</form>
-
+	<form action="/orders" method="post">
+		<select name="food[id]">
+			<% @foods.each do |food| %>
+				<option value="<%= food.id %>"><%= food.name %></option>
+			<%end%>
+		</select>
+		<input type="hidden" name="party[id]" value="<%=@party.id%>">
+		<input type="submit" value="new order">
+	</form>
 
 <% unless @paid == true %>
+	
+	<ul>
+		<% @party.orders.each do |order| %>
+			<li>
+				<form action="/orders/<%= order.id %>" method="post">
+				<input type="hidden" name="_method" value="delete">
+				<%= order.food.name %>
+				<%= order.food.price %>
+				<input type="hidden" name="party[id]" value="<%=@party.id%>"> 
+				<input type="submit" value="Delete">
+				</form>
+			</li>
+		<%end%>
+	</ul>
+
 	<form action="/parties/<%= @party.id%>/checkout" method="post">
 		<input type="hidden" name="_method" value="patch">
 		<input type="checkbox" name="party[paid]" value='true'>Paid?
 		<input type="hidden" name="party[id]" value="<%=@party.id%>"> 
 		<input type="submit" value="checkout">
 	</form>
+
 <% else %>
 	<p> This party has paid. </p>
 <% end %>
+
+<form action="/parties/<%= @party.id %>" method="post">
+	<input type="submit" value="View Receipt">
+</form>

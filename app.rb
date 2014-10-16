@@ -104,12 +104,16 @@ end
 
 post '/orders' do
 	food = Food.find(params[:food][:id])
-	party = Party.find(params[:party][:id])
-	party.foods << food
 	@party = Party.find(params[:party][:id])
-	redirect "/parties/#{party.id}"
+	begin
+		@party.add_food(food)
+		redirect "/parties/#{@party.id}"
+	rescue Party::TicketClosedError => e
+		@error = e.message
+		erb :'parties/error'		
+	end
 end
- 
+
 #Used for setting price to zero
 patch 'orders/:id' do
 	price = Order.find(params[:id])

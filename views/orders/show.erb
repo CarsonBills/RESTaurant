@@ -1,0 +1,10 @@
+<h3> Order Details </h3>
+
+<p> <%= @order.id %> </p>
+<p> <%= @order.food_id %> </p>
+<p> <%= @order.party_id %> </p>
+
+<form action="/orders/<%= @order.id %>" method="post">
+	<input type="hidden" name="_method" value="patch">
+	<input type="submit" value="Free">
+</form>
