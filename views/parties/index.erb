@@ -3,7 +3,9 @@
 <ul>
 	<% @parties.each do |party| %>
 		<li>
-			<%= party.name %>
+			<a href="/parties/<%= party.id %>">
+				<%= party.name %>
+			</a>
 		</li>
 	<% end %>
 </ul>

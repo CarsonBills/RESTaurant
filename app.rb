@@ -97,11 +97,6 @@ delete '/parties/:id' do
 	redirect "/parties"
 end
 
-get '/orders/:id' do
-	@order = Order.find(params[:id]) 
-	erb :"orders/show"
-end
-
 post '/orders' do
 	food = Food.find(params[:food][:id])
 	@party = Party.find(params[:party][:id])
@@ -114,13 +109,13 @@ post '/orders' do
 	end
 end
 
-#Used for setting price to zero
-patch 'orders/:id' do
-	price = Order.find(params[:id])
-	binding.pry
-	Order.update(params[:id])
-	redirect "/parties/#{params[:party][:id]}"
-end
+# #Used for setting price to zero
+# patch '/orders/:id' do
+# price = Order.find(params[:id])
+# binding.pry
+# price.update(params[:id])
+# redirect "/parties/#{params[:party][:id]}"
+# end
 
 delete '/orders/:id' do
 	Order.delete(params[:id])
@@ -130,7 +125,7 @@ end
 post '/parties/:id' do
 	@party = Party.find(params[:id])
 	receipt = @party.foods
-	file = File.open('receipt.txt', 'w')
+	file = File.open('public/receipts/receipt.txt', 'w')
 	file.write(receipt.map {|item| item.to_s}.join.to_s )
 	file.close 
 	redirect "/parties/#{@party.id}/receipt"
@@ -141,13 +136,12 @@ get '/parties/:id/receipt' do
 	receipt = party.foods
 	prices = receipt.map {|item| item[:price]}
 	@total = prices.inject(:+)
-	@receipt_items = File.read('receipt.txt').split(",")
+	@receipt_items = File.read('public/receipts/receipt.txt').split(",")
 	erb :"parties/receipt"
 end
 
 patch '/parties/:id/checkout' do
 	party = Party.find(params[:id])
-	binding.pry
 	party.update(params[:party])
 	redirect "/parties/#{params[:party][:id]}"
 end
