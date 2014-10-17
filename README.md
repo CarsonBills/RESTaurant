@@ -1,1 +1,3 @@
 RESTaurant is a restaurant management app made to simplify the process of running and tracking the orders in a dining room.  Made for use by the employees of any subcribing restaurant, the employee has options from the home page to add a new party to the dining room, view the current parties, view the full menu, and edit the items on the menu. Simply point and click to select the size of the party as well as the orders of each table. When finished, RESTaurant makes it easy to print a receipt with tip suggestions. 
+
+![ScreenShot](https://github.com/CarsonBills/RESTaurant/blob/master/public/images/RESTaurantScreenShot.png)
