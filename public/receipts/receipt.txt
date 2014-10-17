@@ -1,21 +1,16 @@
                Aioli
 **********************************
 Beef   -    11,
-Beef   -    11,
-Beef   -    11,
-Beef   -    11,
-Beef   -    11,
 Bread   -    5,
-Coke   -    2,
-Mac and Cheese   -    3,
+Beef   -    11,
 
-Your total comes to 65 dollars
+Your total comes to 27 dollars
 Tip Suggestions:
-15%  -  9.75
-20%  -  13.0
-25%  -  16.25
+15%  -  4.05
+20%  -  5.4
+25%  -  6.75
 
-Subtotal: $65
+Subtotal: $27
 
 tip: _____________________________
 total:____________________________
