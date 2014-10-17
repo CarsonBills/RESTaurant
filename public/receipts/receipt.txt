@@ -1,1 +1,24 @@
-Beef   -    11,Bread   -    5,Bread   -    5,Salad   -    4,Salad   -    4,Coke   -    2,
+               Aioli
+**********************************
+Beef   -    11,
+Beef   -    11,
+Beef   -    11,
+Beef   -    11,
+Beef   -    11,
+Bread   -    5,
+Coke   -    2,
+Mac and Cheese   -    3,
+
+Your total comes to 65 dollars
+Tip Suggestions:
+15%  -  9.75
+20%  -  13.0
+25%  -  16.25
+
+Subtotal: $65
+
+tip: _____________________________
+total:____________________________
+
+__________________________________
+             Signature

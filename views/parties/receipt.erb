@@ -3,17 +3,12 @@
 <ul>
 	<% @receipt_items.each do |item| %>
 		<li>
-			<div class="receipt_items">
+			<div class="food_items">
 				<%= item %>
 			</div>
 		</li>
 	<% end %>
 </ul>
 
-<h3> Your total comes to <%= @total %> dollars.</h3>
-<p> Please tip your server </p>
-<p> 15% - <%= (@total*0.15).round(2) %> </p>
-<p> 20% - <%= (@total*0.20).round(2) %> </p>
-<p> 25% - <%= (@total*0.25).round(2) %> </p>
 
 <a href="/receipts/receipt.txt">Download Receipt</a>

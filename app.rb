@@ -37,6 +37,7 @@ end
 
 get '/foods/:id' do
 	@food = Food.find(params[:id])
+	#@parties = Party.find(params[:order][:id])
 	erb :'foods/show'
 end
 
@@ -124,10 +125,11 @@ end
 
 post '/parties/:id' do
 	@party = Party.find(params[:id])
-	receipt = @party.foods
-	file = File.open('public/receipts/receipt.txt', 'w')
-	file.write(receipt.map {|item| item.to_s}.join.to_s )
-	file.close 
+	#receipt = @party.foods
+	@party.print_receipt
+	# file = File.open('public/receipts/receipt.txt', 'w')
+	# file.write(receipt.map {|item| item.to_s}.join.to_s )
+	# file.close 
 	redirect "/parties/#{@party.id}/receipt"
 end
 
@@ -136,7 +138,7 @@ get '/parties/:id/receipt' do
 	receipt = party.foods
 	prices = receipt.map {|item| item[:price]}
 	@total = prices.inject(:+)
-	@receipt_items = File.read('public/receipts/receipt.txt').split(",")
+	@receipt_items = File.read('public/receipts/receipt.txt').split("\n")
 	erb :"parties/receipt"
 end
 

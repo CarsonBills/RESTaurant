@@ -22,7 +22,7 @@ header {
 	width: 800px;
 	padding-bottom: 0px;
 	background-color: #F8E4CC;
-	opacity: 0.9;
+	opacity: 0.99;
 }
 .content {
 	margin: 80px 100px;
@@ -43,7 +43,7 @@ header {
 	background: #FF9900;
 	font-family: Helvetica;
 }
-.receipt_items{
+.food_items{
 	display: block;
 	margin-right: 40px;
 }
