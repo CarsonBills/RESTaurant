@@ -1,3 +1,49 @@
 body {
-	background-color: lightgrey;
+	background-image: url('/images/candle_Candle_light_4010.jpg');
+	opacity: 0.9;
+	background-color: #FFFFCC;
+	font-family: England Hand DB;
+	font-size: 25px;
+	color: #153450;
+}
+ul {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	color: #153450;
+}
+h1 {
+	content: 10%;
+	color: #153450;
+}
+header {
+	height: 55px;
+	width: 800px;
+	padding-bottom: 0px;
+	background-color: #F8E4CC;
+	opacity: 0.9;
+}
+.content {
+	margin: 80px 100px;
+	border-left: solid 2px;
+	border-right: solid 2px;
+	border-color: #153450;
+	width: 600px;
+	display: block;
+	background-color: #F8E4CC;
+	padding-top: 20px;
+	padding-bottom: 50px;
+}
+.delete {
+	background: #FFFBD0;
+	font-family: Helvetica;
+}
+.submit {
+	background: #FF9900;
+	font-family: Helvetica;
+}
+.receipt_items{
+	display: block;
+	margin-right: 40px;
 }

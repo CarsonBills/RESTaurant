@@ -5,17 +5,17 @@
 
 <form action="/parties/<%= @party.id %>" method="post">
 	<input type="hidden" name="_method" value="delete">
-	<input type="submit" value="Delete Party">
+	<input type="submit" value="Delete Party" class="delete">
 </form>
 
 	<form action="/orders" method="post">
 		<select name="food[id]">
 			<% @foods.each do |food| %>
-				<option value="<%= food.id %>"><%= food.name %></option>
+				<option value="<%= food.id %>" class="submit"><%= food.name %></option>
 			<%end%>
 		</select>
 		<input type="hidden" name="party[id]" value="<%=@party.id%>">
-		<input type="submit" value="new order">
+		<input type="submit" value="new order" class='submit'>
 	</form>
 
 <% unless @paid == true %>
@@ -28,7 +28,7 @@
 				<%= order.food.name %>
 				<%= order.food.price %>
 				<input type="hidden" name="party[id]" value="<%=@party.id%>"> 
-				<input type="submit" value="Delete">
+				<input type="submit" value="Delete" class="delete">
 				</form>
 			</li>
 		<%end%>
@@ -38,7 +38,7 @@
 		<input type="hidden" name="_method" value="patch">
 		<input type="checkbox" name="party[paid]" value='true'>Paid?
 		<input type="hidden" name="party[id]" value="<%=@party.id%>"> 
-		<input type="submit" value="checkout">
+		<input type="submit" value="checkout" class="submit">
 	</form>
 
 <% else %>
@@ -46,5 +46,5 @@
 <% end %>
 
 <form action="/parties/<%= @party.id %>" method="post">
-	<input type="submit" value="View Receipt">
+	<input type="submit" value="View Receipt" class="submit">
 </form>
