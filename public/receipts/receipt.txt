@@ -1,16 +1,26 @@
                Aioli
 **********************************
-Beef   -    11,
-Bread   -    5,
-Beef   -    11,
+Salad   -    11,
+Steak   -    20,
+Salad   -    11,
+Salad   -    11,
+Steak   -    20,
+Salad   -    11,
+Bread   -    2,
+Steak   -    20,
+Wine   -    10,
+Beer   -    8,
+Salad   -    11,
+Beer   -    8,
+Salad   -    11,
 
-Your total comes to 27 dollars
+Your total comes to 154 dollars
 Tip Suggestions:
-15%  -  4.05
-20%  -  5.4
-25%  -  6.75
+15%  -  23.099999999999998
+20%  -  30.8
+25%  -  38.5
 
-Subtotal: $27
+Subtotal: $154
 
 tip: _____________________________
 total:____________________________
