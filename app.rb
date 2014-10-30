@@ -3,9 +3,18 @@ Bundler.require
 
 require 'pry'
 
+# MODELS
+
 require_relative 'models/food'
 require_relative 'models/party'
 require_relative 'models/order'
+require_relative 'modeles/user'
+
+# HELPERS
+require_relative 'helpers/link_helper'
+helpers ActiveSupport::Inflector
+
+# DATABASE
 
 ActiveRecord::Base.establish_connection({
 	adapter: 'postgresql',
@@ -106,17 +115,9 @@ post '/orders' do
 		redirect "/parties/#{@party.id}"
 	rescue Party::TicketClosedError => e
 		@error = e.message
-		erb :'parties/error'		
+		erb :'parties/error'
 	end
 end
-
-# #Used for setting price to zero
-# patch '/orders/:id' do
-# price = Order.find(params[:id])
-# binding.pry
-# price.update(params[:id])
-# redirect "/parties/#{params[:party][:id]}"
-# end
 
 delete '/orders/:id' do
 	Order.delete(params[:id])
@@ -125,11 +126,7 @@ end
 
 post '/parties/:id' do
 	@party = Party.find(params[:id])
-	#receipt = @party.foods
 	@party.print_receipt
-	# file = File.open('public/receipts/receipt.txt', 'w')
-	# file.write(receipt.map {|item| item.to_s}.join.to_s )
-	# file.close 
 	redirect "/parties/#{@party.id}/receipt"
 end
 

@@ -37,6 +37,6 @@ class Party < ActiveRecord::Base
 		file.write ("\n")
 		file.write ("__________________________________\n")
 		file.write ("             Signature\n")
-		file.close 
+		file.close
 	end
 end
