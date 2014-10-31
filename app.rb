@@ -8,7 +8,7 @@ require 'pry'
 require_relative 'models/food'
 require_relative 'models/party'
 require_relative 'models/order'
-require_relative 'modeles/user'
+require_relative 'models/user'
 
 # HELPERS
 require_relative 'helpers/link_helper'
@@ -21,8 +21,44 @@ ActiveRecord::Base.establish_connection({
 	database: 'restaurant'
 	})
 
+enable :sessions
+
 get '/' do
+	erb :root
+end
+
+get '/welcome' do
 	erb :index
+end
+
+get '/login' do
+	erb :login
+end
+
+post '/sessions' do
+	user = User.find_by({username: params[:username]})
+	if user && user.password == params[:password]
+		session[:current_user] = user.id
+		redirect '/welcome'
+	else
+		redirect '/sessions/login'
+	end
+end
+
+delete '/sessions' do
+	session[:current_user] = nil
+	redirect '/'
+end
+
+get 'users/new' do
+	erb :'users/new'
+end
+
+post '/users' do
+	user = User.new(params[:user])
+	user.password = params[:password]
+	user.save!
+	redirect '/welcome'
 end
 
 get '/foods' do
