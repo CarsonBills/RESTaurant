@@ -7,11 +7,6 @@ each do |file|
 	puts "require #{file}"
 end
 
-ActiveRecord::Base.establish_connection({
-	adapter: 'postgresql',
-	database: 'restaurant'
-	})
-
 map('/sessions'){run SessionsController }
 map('/users'){run UsersController }
 map('/'){ run ApplicationController }

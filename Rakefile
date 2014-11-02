@@ -2,12 +2,12 @@ require 'bundler'
 Bundler.require
 require 'sinatra/activerecord/rake'
 
-require 'pry'
-
 require_relative 'models/food'
 require_relative 'models/party'
 require_relative 'models/order'
-require_relative 'app'
+require_relative 'connection'
+
+
 
 namespace :db do
 	desc "Create restaurant database"
@@ -43,7 +43,7 @@ namespace :db do
 		parties = Party.all
 		foods = Food.all
 
-		100.times do 
+		100.times do
 			Order.create({food_id: foods.sample.id, party_id: parties.sample.id})
 		end
 	end
